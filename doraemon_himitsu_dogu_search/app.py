@@ -12,6 +12,7 @@ from data import (
     MODEL_NAME,
 )
 
+
 def main():
     es = Elasticsearch(
         ENDPOINT,
@@ -37,14 +38,18 @@ def main():
     }
     result = es.search(index=INDEX_NAME, body=query)
 
-    serp = [ {
-                "似ている度": document["_score"],
-                "ひみつ道具の名前": document["_source"]["name"],
-                "よみかた": document["_source"]["yomi"],
-                "説明": document["_source"]["description"],
-            } for document in result["hits"]["hits"]]
+    serp = [
+        {
+            "似ている度": document["_score"],
+            "ひみつ道具の名前": document["_source"]["name"],
+            "よみかた": document["_source"]["yomi"],
+            "説明": document["_source"]["description"],
+        }
+        for document in result["hits"]["hits"]
+    ]
 
     st.table(pd.DataFrame(serp))
+
 
 if __name__ == "__main__":
     main()

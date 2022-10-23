@@ -23,5 +23,6 @@ def main():
     np.save(SENTENTS_VECTOR_DATA_PATH, sentence_embeddings.cpu().detach().numpy())
     print("End serialization")
 
+
 if __name__ == "__main__":
     main()
