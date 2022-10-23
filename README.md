@@ -1,6 +1,6 @@
-# Doraemon Himitsu Dogu Japanese Natural Language Search
+# Doraemon Himitsu Dogu Japanese semantic search
 
-Python based Doraemon Himitsu Dogu Japanese Natural Language Search based on Elasticsearch approximate nearest neighbor(ANN) feature.
+Python based Doraemon Himitsu Dogu Japanese semantic search based on Elasticsearch approximate nearest neighbor(ANN) feature.
 
 Japanese: Elasticsearch の近似近傍探索機能を使ったドラえもんのひみつ道具自然言語検索エンジン
 
