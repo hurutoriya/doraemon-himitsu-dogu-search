@@ -20,11 +20,14 @@ run-es:
 	@docker rm es01
 	@docker build --tag=es .
 	@docker run --name es01 --net elastic -p 9200:9200 -p 9300:9300 -it -v /usr/share/elasticsearch/data es
+
+.PHONY: get-es-cert
+get-es-cert: 
 	@echo "Get the certification for ElasticSearch"
 	@docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
 
 .PHONY: build-index
-build-index:
+build-index: get-es-cert
 	@echo "Make structured data from raw data"
 	poetry run python $(SRC)/preprocess.py
 	@echo "Run sentens vectorizer"
@@ -33,11 +36,11 @@ build-index:
 	poetry run python $(SRC)/indexer.py
 
 .PHONY: es-info
-es-info:
+es-info: get-es-cert
 	@echo "Show the running Elasticsearch info"
 	curl --cacert http_ca.crt -u elastic:elastic https://localhost:9200
 
 .PHONY: run-app
-run-app:
+run-app: get-es-cert
 	@echo "Running the web app for Doraemon himitsu dogu search"
-	poetry run streamlit run $(SRC)/app.py
+	poetry run streamlit run doraemon_himitsu_dogu_search/app.py
