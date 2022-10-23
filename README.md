@@ -1,6 +1,6 @@
-# Doraemon Himitsu Dogu Natural Language Search
+# Doraemon Himitsu Dogu Japanese Natural Language Search
 
-Python based Doraemon Himitsu Dogu Natural Language Search based on Elasticsearch approximate nearest neighbor(ANN) feature.
+Python based Doraemon Himitsu Dogu Japanese Natural Language Search based on Elasticsearch approximate nearest neighbor(ANN) feature.
 
 Japanese: Elasticsearch の近似近傍探索機能を使ったドラえもんのひみつ道具自然言語検索エンジン
 
@@ -49,9 +49,9 @@ id["HuggingFace(encoder)"]-->|"[1.2, ... 0.3]"|ANN
 $ make run-es
 make run-es
 es01
-[+] Building 0.1s (6/6) FINISHED                                                                                                                                                    
+[+] Building 0.1s (6/6) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                                           0.0s
- => => transferring dockerfile: 223B        
+ => => transferring dockerfile: 223B
 ...
 
 $ make build-index
