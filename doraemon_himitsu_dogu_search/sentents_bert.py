@@ -22,15 +22,9 @@ class SentenceBertJapanese:
         self.model.to(device)
 
     def _mean_pooling(self, model_output, attention_mask):
-        token_embeddings = model_output[
-            0
-        ]  # First element of model_output contains all token embeddings
-        input_mask_expanded = (
-            attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
-        )
-        return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(
-            input_mask_expanded.sum(1), min=1e-9
-        )
+        token_embeddings = model_output[0]  # First element of model_output contains all token embeddings
+        input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+        return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
     def encode(self, sentences, batch_size=8):
         all_embeddings = []
@@ -42,9 +36,7 @@ class SentenceBertJapanese:
                 batch, padding="longest", truncation=True, return_tensors="pt"
             ).to(self.device)
             model_output = self.model(**encoded_input)
-            sentence_embeddings = self._mean_pooling(
-                model_output, encoded_input["attention_mask"]
-            ).to("cpu")
+            sentence_embeddings = self._mean_pooling(model_output, encoded_input["attention_mask"]).to("cpu")
 
             all_embeddings.extend(sentence_embeddings)
 

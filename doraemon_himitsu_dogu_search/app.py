@@ -3,14 +3,7 @@ import sentents_bert
 import streamlit as st
 from elasticsearch import Elasticsearch
 
-from data import (
-    CERT_PATH,
-    ELASTIC_PASSWORD,
-    ELASTIC_USER,
-    ENDPOINT,
-    INDEX_NAME,
-    MODEL_NAME,
-)
+from data import CERT_PATH, ELASTIC_PASSWORD, ELASTIC_USER, ENDPOINT, INDEX_NAME, MODEL_NAME
 
 
 def main():

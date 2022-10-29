@@ -45,9 +45,7 @@ def main():
         doc_id += 1
     # NOTE: https://stackoverflow.com/questions/12309269/how-do-i-write-json-data-to-a-file
     with open(HIMITSU_DOGU_DATA_PATH, "w", encoding="utf-8") as f:
-        json.dump(
-            himitsu_dogs, f, ensure_ascii=False, indent=4, cls=EnhancedJSONEncoder
-        )
+        json.dump(himitsu_dogs, f, ensure_ascii=False, indent=4, cls=EnhancedJSONEncoder)
 
 
 if __name__ == "__main__":
