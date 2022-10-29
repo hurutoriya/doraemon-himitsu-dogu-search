@@ -36,5 +36,5 @@ if __name__ == "__main__":
     es.indices.create(index=INDEX_NAME, body=mapping)
 
     for himitsu_dogu, vector in tqdm(zip(himitsu_dogus, himitsu_dogu_sentents_vectors)):
-        himitsu_dogu["vector"] = vector.tolist()
+        himitsu_dogu["vector"] = (vector / np.linalg.norm(vector)).tolist()
         resp = es.index(index=INDEX_NAME, id=himitsu_dogu["id"], document=himitsu_dogu)
