@@ -11,8 +11,8 @@ def main():
 
     with open(HIMITSU_DOGU_DATA_PATH, "r") as f:
         himitsu_dogus = json.load(f)
-
-    himitsu_docs_descriptions = [himitsu_dogu["description"] for himitsu_dogu in himitsu_dogus]
+    # NOTE: Combine name and description to increase the recall for query
+    himitsu_docs_descriptions = [himitsu_dogu["name"] + " " + himitsu_dogu["description"] for himitsu_dogu in himitsu_dogus]
     print("Start BERT encode")
     sentence_embeddings = model.encode(himitsu_docs_descriptions, batch_size=32)
     print("End BERT encode")
