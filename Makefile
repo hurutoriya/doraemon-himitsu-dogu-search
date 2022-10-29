@@ -4,16 +4,16 @@ SRC=doraemon_himitsu_dogu_search
 .PHONY: lint
 lint:
 	@echo "Run Linter"
-	poetry run flake8 $(SRC)
-	poetry run black $(SRC) --check
-	poetry run mypy $(SRC)
-	poetry run isort $(SRC) --check --profile black
+	poetry run flake8 .
+	poetry run black . --check
+	poetry run mypy .
+	poetry run isort . --check
 
 .PHONY: fmt
 fmt:
 	@echo "Run formatter"
-	poetry run black $(SRC)
-	poetry run isort $(SRC) --profile black
+	poetry run black .
+	poetry run isort .
 
 .PHONY: run-es
 run-es:
