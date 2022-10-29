@@ -40,6 +40,11 @@ es-info: get-es-cert
 	@echo "Show the running Elasticsearch info"
 	curl --cacert http_ca.crt -u elastic:elastic https://localhost:9200
 
+.PHONY: es-index-delete
+es-index-delete: get-es-cert
+	@echo "Delete existing index in Elasticseasrch"
+	curl --cacert http_ca.crt -u elastic:elastic -XDELETE https://localhost:9200/himitsu_dogu?pretty=true
+
 .PHONY: run-app
 run-app: get-es-cert
 	@echo "Running the web app for Doraemon himitsu dogu search"
