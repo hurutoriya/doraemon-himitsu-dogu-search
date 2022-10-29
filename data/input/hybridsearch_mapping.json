@@ -25,7 +25,7 @@
              "type":"dense_vector",
              "dims":768,
              "index": true,
-             "similarity": "dot_product"
+             "similarity": "l2_norm"
           },
           "name":{
              "type":"text",
