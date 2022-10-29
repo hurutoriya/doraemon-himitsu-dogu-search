@@ -24,9 +24,7 @@ class EnhancedJSONEncoder(json.JSONEncoder):
 
 
 def main():
-    """
-    make structured data as json file from raw text file.
-    """
+    """Make structured data as json file from raw text file."""
 
     # NOTE: Number of one Himiatsu dogu lines
     HIMITSU_DOGU_LINE_NUM = 3

@@ -1,6 +1,5 @@
-"""
-Share params.
-"""
+"""Shared params."""
+
 # NOTE: Elasticsearch
 ELASTIC_USER = "elastic"
 ELASTIC_PASSWORD = "elastic"
