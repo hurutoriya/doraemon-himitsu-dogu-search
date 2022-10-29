@@ -45,6 +45,14 @@ es-index-delete: get-es-cert
 	@echo "Delete existing index in Elasticseasrch"
 	curl --cacert http_ca.crt -u elastic:elastic -XDELETE https://localhost:9200/himitsu_dogu?pretty=true
 
+.PHONY: test-es-analyzer
+test-es-analyzer: get-es-cert
+	curl --cacert http_ca.crt -u elastic:elastic -X POST "https://localhost:9200/himitsu_dogu/_analyze?pretty" -H 'Content-Type: application/json' -d'{"analyzer": "custome_ja_analyzer","text":"ドラえもんのひみつ道具はどこでもドア以外にもたくさん存在する"}'
+
+.PHONY: test-es-multimatch
+test-es-multimatch: get-es-cert
+	curl --cacert http_ca.crt -u elastic:elastic -X POST "https://localhost:9200/himitsu_dogu/_search?pretty" -H 'Content-Type: application/json' -d'{"query": {"multi_match" : {"query":"どこでもドア", "fields": [ "name", "description" ] }}}'
+
 .PHONY: run-app
 run-app: get-es-cert
 	@echo "Running the web app for Doraemon himitsu dogu search"
