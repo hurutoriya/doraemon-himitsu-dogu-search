@@ -77,3 +77,8 @@ poetry run streamlit run doraemon_himitsu_dogu_search/app.py
 
   Local URL: http://localhost:8501
 ```
+
+
+## Related Posts
+
+- [Elasticsearchの近似近傍探索を使って、ドラえもんのひみつ道具検索エンジンを作ってみた \| 🦅 hurutoriya](https://shunyaueta.com/posts/2022-10-23-2344/) in Japanese
