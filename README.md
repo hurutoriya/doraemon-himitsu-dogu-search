@@ -32,14 +32,16 @@ HuggingFace-->|特徴ベクトル化|Elasticsaerch
 
 ```mermaid
 graph LR;
-Query-->|強くなる|id["HuggingFace(encoder)"]
+Query-->|強くなる|B["HuggingFace(encoder)"]
 subgraph Streamlit
-    id["HuggingFace(encoder)"]
+    B
 end
 subgraph Elasticsearch
+    A[multi match]
     ANN
 end
-id["HuggingFace(encoder)"]-->|"[1.2, ... 0.3]"|ANN
+B-->|"[1.2, ... 0.3]"|ANN
+B-->|"kuromoji"|A
 ```
 
 ## How to set up
