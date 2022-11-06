@@ -39,9 +39,11 @@ end
 subgraph Elasticsearch
     A[multi match]
     ANN
+    A-->hybrid
+    ANN-->hybrid
 end
 B-->|"[1.2, ... 0.3]"|ANN
-B-->|"kuromoji"|A
+B-->|"kuromoji analyzer for Japanese"|A
 ```
 
 ## How to set up
